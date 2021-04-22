@@ -33,3 +33,5 @@ const percentageBarAscii = (percentNum, size) => {
 const textBlock = (text) => "```text\n" + text + "```\n";
 
 // create padstart
+
+module.exports = { percentageBarAscii, textBlock };
