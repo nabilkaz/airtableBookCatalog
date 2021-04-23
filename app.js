@@ -31,7 +31,8 @@ const recordCallBack = function (err, records) {
   const content = books
     .map((book) => {
       let graph = markdown.percentageBarAscii(book.percent);
-      let str = `${graph} ${book.percent}%  ${book.title} \n`;
+      let formattedNum = book.percent.toString().padStart(2, "0");
+      let str = `${graph} ${formattedNum}%  ${book.title} \n`;
       return str;
     })
     .join("");
