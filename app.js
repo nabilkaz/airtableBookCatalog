@@ -1,5 +1,11 @@
 const airtable = require("./utils/airtable");
 const markdown = require("./utils/markdown");
+const templateCompiler = require("./utils/templateCompiler");
+
+const templatePath = "./templates/readme.md";
+const destinationFilePath = "readme.md";
+
+let books = [];
 
 let selectionCriteria = {
   maxRecords: 10,
@@ -16,9 +22,25 @@ const recordCallBack = function (err, records) {
     return;
   }
   records.forEach(function (record) {
-    console.log("Retrieved", record.get("Title"));
-    console.log("Retrieved", record.get("Completed"));
+    books.push({
+      title: record.get("Title"),
+      percent: record.get("Completed") * 100,
+    });
   });
+
+  const content = books
+    .map((book) => {
+      let graph = markdown.percentageBarAscii(book.percent);
+      let str = `${graph} ${book.percent}%  ${book.title} \n`;
+      return str;
+    })
+    .join("");
+
+  const markdownContent = templateCompiler.compile(templatePath, {
+    books: markdown.textBlock(content),
+  });
+
+  templateCompiler.generateDoc(destinationFilePath, markdownContent);
 };
 
 const table = new airtable.Table(tableName, selectionCriteria);
