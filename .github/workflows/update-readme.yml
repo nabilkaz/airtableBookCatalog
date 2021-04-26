@@ -14,6 +14,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Generate updated markdown
-      - run: echo '${{ secrets.AIRTABLE_API_KEY }}' > .env
-      - run: npm i
-      - run: npm run build
+        script: | 
+        echo '${{ secrets.AIRTABLE_API_KEY }}' > .env
+        npm i
+        npm run build
