@@ -19,3 +19,7 @@ jobs:
           echo 'AIRTABLE_API_KEY=${{ secrets.AIRTABLE_API_KEY }}' > .env
           npm i
           npm run build
+          rm .env
+
+      - name: Git auto commit
+        uses: stefanzweifel/git-auto-commit-action@v4.7.2
