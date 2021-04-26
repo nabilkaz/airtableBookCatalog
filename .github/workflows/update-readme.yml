@@ -6,6 +6,7 @@ name: Update Readme with book progress
 on:
   schedule:
     - cron: "*/20 * * * *"
+  workflow_dispatch:
 
 jobs:
   build:
