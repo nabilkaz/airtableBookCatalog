@@ -11,7 +11,7 @@ Each feature resides in `/utils` and is used in `app.js`.
 ## Examples
 Actual example of the current books I'm reading
 ```text
-█████░░░░░░░░░░░░░░░░░░░░ 20%  Dark Money 
+████████░░░░░░░░░░░░░░░░░ 35%  Dark Money 
 ███░░░░░░░░░░░░░░░░░░░░░░ 13%  Pedagogy of the Oppressed 
 ███████████████░░░░░░░░░░ 60%  Structuring Design 
 ```
